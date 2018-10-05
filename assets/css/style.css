@@ -103,7 +103,7 @@ table{
 	width:100%;
 }
 
-table thead{
+table thead,table tfoot{
 	background:#f4f4f4;
 	padding:20px;
 }
@@ -329,7 +329,9 @@ input[readonly="readonly"]{
 	padding:20px;
 	text-align: center;
 }
-
+.div-form .edit-description{
+	padding:0px;
+}
 .search-view-organization{
 	padding:100px 0 0;
 }
@@ -411,6 +413,6 @@ input[readonly="readonly"]{
 	float: right;
 }
 
-.change-password-field{
+.change-password-field,.edit-description{
 	display: none;
 }

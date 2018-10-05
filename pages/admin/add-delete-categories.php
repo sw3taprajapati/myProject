@@ -46,7 +46,7 @@ if(isset($_SESSION['username'])){
 							<tr>
 								<td><?php echo $i; ?></td>
 								<td><?php echo $value['categories_list']; ?></td>
-								<td><a href="index.php?filename=pages/admin/delete.php&category-id=<?php echo $value['categories_id'] ?>"><i class="fa fa-trash"></i></a></td>
+								<td><a href="index.php?filename=pages/admin/delete.php&category-id=<?php echo $value['categories_id'] ?>" onclick="return confirmationBox('remove?');"><i class="fa fa-trash"></i></a></td>
 							</tr>
 							<?php
 							$i++;

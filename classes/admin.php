@@ -70,9 +70,9 @@ Class Admin extends DatabaseConnection{
 
 	public function addCategories($categories){
 
-		$sql="Select * from categories where categories_list LIKE '".$categories."'";
+		$this->sql="Select * from categories where categories_list LIKE '".$categories."'";
 
-		$result=$this->db->queryFunction($sql);
+		$result=$this->db->queryFunction($this->sql);
 		$count=0;
 
 		foreach ($result as $value) {
@@ -102,11 +102,43 @@ Class Admin extends DatabaseConnection{
 
 	public function viewCategories(){
 
-		$sql="SELECT * FROM Categories";
+		$this->sql="SELECT * FROM Categories";
 
-		$result=$this->db->queryFunction($sql);
+		$result=$this->db->queryFunction($this->sql);
 
 		return $result;
+	}
+
+	public function deleteCategories($categoriesId){
+
+		$count=0;
+		$this->sql="select * from organizationcategories where categories_id= ".$categories_id;
+		$data=$this->db->queryFunction();
+
+		foreach ($data as $value) {
+			$count++;
+		}
+		echo $count;
+		die;
+		if ($count==0){
+			$this->sql="Delete from Categories where categories_id = ".$categoriesId;
+
+			$result=$this->db->queryFunction($this->sql);
+
+			if($result>0){
+				$_SESSION['status']="Deleted sucessfully!!";
+				$_SESSION['class']="success";
+				header('Location:/index.php?filename=pages/admin/add-delete-categories.php');
+			}else{
+				$_SESSION['status']="Something went wrong!!!Try again later.";
+				$_SESSION['class']="fail";
+				header('Location:/index.php?filename=pages/admin/add-delete-categories.php');
+			}
+		}else{
+			$_SESSION['status']="The list is in requirement of the organzation!cant delete!!";
+			$_SESSION['class']="fail";
+			header('Location:/index.php?filename=pages/admin/add-delete-categories.php');
+		}
 	}
 }
 ?>

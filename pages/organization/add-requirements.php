@@ -1,7 +1,13 @@
 <?php
-include('classes/organization/EditRequirement.php');
+$obj=new Organization();
+if(isset($_POST['submit'])){
+	$obj->addRequirements($_POST['checkBox'],$_POST['description']);
+}
+if(isset($_GET['id'])){
+}
+if(isset($_GET['id'])){
 
-$obj=new EditRequirement();
+}
 $data=$obj->getCategoriesList(); 
 ?>
 <section class="add-requirements">
@@ -44,6 +50,7 @@ $data=$obj->getCategoriesList();
 			
 			<?php
 			$i=1; 
+			$description;
 			$data=$obj->getRequirementDetails(); 
 			?>
 			
@@ -59,27 +66,40 @@ $data=$obj->getCategoriesList();
 				<tbody>
 					<?php
 					foreach ($data as $value) {
+						$description=$value['item_description'];
+
 						?>
 						<tr>
 							<td><?php echo $i; ?></td>
 							<td><?php echo $value['categories_list']; ?></td>
-							<td><?php echo $value['item_description']; ?></td>
+							<td><a href="index.php?filename=pages/organization/add-requirements.php&id=<?php echo $value['categories_id'] ?>" onclick="return confirmationBox('remove?');"><i class="fa fa-trash"></i></a></td>
 						</tr>
 						<?php
 					}
 					?>
 				</tbody>
+				<tfoot>
+					<tr>
+						<td>Description of items : </td>
+						<td><?php echo $value['item_description']; ?></td>
+						<td><i class="fa fa-edit" id="edit-requirements"></i></td>
+					</tr>
+				</tfoot>
 			</table>
+			<div class="edit-description">
+				<form action="" method="POST">
+					<div class="form-group">
+						<textarea name="description" id="description" name="description" cols="30" rows="5" placeholder="Edit your description here" value="<?php echo $description ?>" required="required"></textarea>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Edit Requirement" class="button btn-blue" name="submitedit">
+						<input type="button" value="cancel" name="cancel" id="cancel" class="button btn-blue">
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </section>
 <?php
 
-if(isset($_POST['submit'])){
-	$obj->addRequirements($_POST['checkBox'],$_POST['description']);
-	
-	echo($_POST['checkbox']);
-	echo($_POST['description']);
-	die;
-}
 ?>

@@ -106,6 +106,17 @@ crossorigin="anonymous"></script>
 			});
 		});
 	});
+
+	$('#edit-requirements').click(function(){
+		$('.div-form').hide();
+		$('.edit-description').show();
+	});
+
+	$('#cancel').click(function(){
+		$('.div-form').show();
+		$('.edit-description').hide();
+
+	});
 </script>
 </div>
 <?php

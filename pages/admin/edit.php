@@ -1,9 +1,7 @@
 <?php
 
-include('classes/admin/ApproveDeclineOrganization.php');
-
 $id=$_GET['id'];
 
-$obj=new ApproveDeclineOrganization();
+$obj=new Admin();
 $obj->approveOrganization($id);
 ?>

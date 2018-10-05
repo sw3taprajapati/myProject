@@ -1,9 +1,9 @@
 <?php
 @session_start();
 
-include_once('includes/head.php');
-include_once('includes/header.php');
-include_once('includes/main.php');
+include_once('pages/includes/head.php');
+include_once('pages/includes/header.php');
+include_once('pages/includes/main.php');
 include_once('classes/includeClasses.php');
 
 if(isset($_GET['filename']) || isset($_SESSION['username'])){
@@ -42,9 +42,9 @@ if(isset($_GET['filename']) || isset($_SESSION['username'])){
 
 	}
 }else{
-	include('includes/banner.php');
+	include('pages/includes/banner.php');
 	include ('pages/user/section-categories.php');
 
 }
-include_once('includes/footer.php');
+include_once('pages/includes/footer.php');
 ?>

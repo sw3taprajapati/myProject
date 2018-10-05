@@ -5,7 +5,7 @@ if(isset($_SESSION['username'])){
 
 		<h2>Organization List</h2>
 		<?php 
-		$obj=new ApproveDeclineOrganization();
+		$obj=new Admin();
 		$list=$obj->selectOrganizationList();
 		$i=1;
 
